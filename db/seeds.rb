@@ -5,23 +5,29 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+# Post.destroy_all
+# User.destroy_all
+
 Post.destroy_all
 User.destroy_all
 
 10.times do
+    name = Faker::Name.first_name
    u = User.create(
-        email:(Faker::Name.first_name + "@test"),
-        name:Faker::Name.first_name,
-        password:"123456"
+        email:(name + "@test.com"),
+        name:name,
+        password: 123456
+       
     )
     5.times do
         Post.create(
-            title:Faker::Movie.title,
+            title: Faker::Movie.title,
             body:Faker::Movie.quote,
-            user_id: u.id,
+            user_id: u.id
         )
     end
     puts "User size:#{User.all.size}"
     puts "Post size:#{Post.all.size}"
    
 end
+

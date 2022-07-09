@@ -12,6 +12,7 @@ import { normalize } from 'styled-normalize'
 
 import { createGlobalStyle } from "styled-components";
 import Posts from "./Pages/Posts";
+import MyPost from "./Pages/MyPosts";
 
 const GlobalStyle = createGlobalStyle`
    ${normalize}
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/signup" element={<SignUp />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/posts" element={<Posts />} />
+            <Route path="/mypost" element={<MyPost />} />
             <Route path="/account" element={<UserAccount />} />
           </Route>
           <Route path="/*" element={<NoMatch />} />

@@ -6,9 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import Button from 'react-bootstrap/Button'
 import PostForm from "./PostForm";
 import { useToggle } from "../hooks";
-import Pagination from 'react-bootstrap/Pagination';
-import PageItem from 'react-bootstrap/PageItem'
-import { render } from "@testing-library/react";
+
 
 const Posts = () => {
     const { isToggled, toggle } = useToggle(false);
@@ -30,16 +28,6 @@ const Posts = () => {
         }
     }
 
-    const newPost = async (post) => {
-        try {
-            let res = await axios.post(`/api/users/${user.id}`, post)
-            setPosts([...posts, res.data])
-        } catch (err) {
-            alert('err')
-        }
-
-    }
-
     const cleanedPost = (post) => {
         let clean = post.map((p) => {
             return {
@@ -55,7 +43,10 @@ const Posts = () => {
     }
     const renderPost = () => {
         return posts.map(po => {
-            return <PostCard key={po.id} {...po} />
+            return (<div className='postpage'>
+                <PostCard key={po.id} {...po} />
+            </div>
+            )
         })
     }
 
@@ -65,9 +56,14 @@ const Posts = () => {
 
     return (
         <div>
-            <h2>Posts</h2>
-            <PostForm newPost={newPost} />
-            {renderPost()}
+            <div>
+                <h2>Posts</h2>
+            </div>
+
+
+            <div className="pagecontainer">
+                {renderPost()}
+            </div>
         </div>
     )
 

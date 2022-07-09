@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
 
     private
     def set_user
-        @author = User.find(params[:id])
+        @user = User.find(params[:id])
     end
 
 

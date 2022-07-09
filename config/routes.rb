@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     post '/users/:user_id/posts/:post_id/comments', to: 'comments#create'
     delete '/users/:id/posts/:id', to: 'posts#destroy'
     delete '/users/:id', to: 'post#destroy'
-    delete '/users/:user_id/posts/:post_id/comments/:comment_id'
+    # delete '/users/:user_id/posts/:post_id/comments/:comment_id'
   end
 end

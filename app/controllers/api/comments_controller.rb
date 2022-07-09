@@ -2,6 +2,10 @@ class Api::CommentsController < ApplicationController
   before_action :set_user
   before_action :set_post
 
+  def index
+    render json: @post.comments.all
+  end
+
   def create 
     @comment = @post.comments.new(comment_params)
     if(@comment.save)
@@ -20,6 +24,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def comment_params 
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment, :user_id, :post_id)
   end
 end

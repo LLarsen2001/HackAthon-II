@@ -1,8 +1,12 @@
 class Api::PostsController < ApplicationController
-    before_action :set_user
+    before_action :set_user, except: [:all]
     before_action :set_post, only: [:show, :update, :destroy]
-    def index
+   
+    def all
         render json: Post.all
+    end
+    def index 
+        render json: @user.posts
     end
     def show
         render json: @post

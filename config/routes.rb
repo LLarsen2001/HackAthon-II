@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   namespace :api do
+    get '/posts', to: 'posts#all'
     get '/users', to: 'users#index'
     get '/users/:user_id/posts', to:'posts#index'
     get '/users/:id', to: 'users#show'

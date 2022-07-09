@@ -11,6 +11,9 @@ const Navbar = () => {
                     <Link to="/account">
                         <li>Account</li>
                     </Link>
+                    <Link to="/posts">
+                        <li>Posts</li>
+                    </Link>
                     <li onClick={logout}>Logout</li>
                 </>
             );

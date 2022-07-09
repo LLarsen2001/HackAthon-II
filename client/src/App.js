@@ -11,6 +11,7 @@ import Hooks from "./demos/Hooks.js";
 import { normalize } from 'styled-normalize'
 
 import { createGlobalStyle } from "styled-components";
+import Posts from "./Pages/Posts";
 
 const GlobalStyle = createGlobalStyle`
    ${normalize}
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route element={<ProtectedRoute />}>
+            <Route path="/posts" element={<Posts />} />
             <Route path="/account" element={<UserAccount />} />
           </Route>
           <Route path="/*" element={<NoMatch />} />

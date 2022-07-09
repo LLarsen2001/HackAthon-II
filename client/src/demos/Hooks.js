@@ -1,5 +1,5 @@
 import Card from "../components/shared/Card";
-import Button, { ButtonContainer } from "../styledComponents/Button";
+import Button from "../styledComponents/Button";
 import {
     useToggle,
     useLocalStorage,

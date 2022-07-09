@@ -11,6 +11,7 @@ const PostCard = ({ title, body }) => {
                 <Card.Text>
                     {body}
                 </Card.Text>
+
             </Card.Body>
         </Card>
     )

@@ -6,6 +6,10 @@ class Api::CommentsController < ApplicationController
     render json: @post.comments.all
   end
 
+  def all_user_comments
+    render json: @user.comments.all
+  end
+
   def create 
     @comment = @post.comments.new(comment_params)
     if(@comment.save)

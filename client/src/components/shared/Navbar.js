@@ -23,17 +23,9 @@ const BuildingNavbar = () => {
         if (user) {
             return (
                 <>
-
                     <MyLink url='/posts' >Posts</MyLink>
-
-
-
-
-
-
-
+                    <MyLink url='/mypost' >Your Posts</MyLink>
                     <Nav.Link as={"li"} onClick={logout}>Logout</Nav.Link>
-
                 </>
 
 
@@ -41,18 +33,7 @@ const BuildingNavbar = () => {
         } else {
             return (
                 <>
-
-
-
-
-
-
                     <MyLink url="/signup">Sign Up</MyLink>
-
-
-
-
-
                 </>
             );
         }

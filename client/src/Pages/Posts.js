@@ -1,9 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import React from "react";
 import PostCard from "../components/shared/PostCard";
+import { AuthContext } from "../providers/AuthProvider";
+import Button from 'react-bootstrap/Button'
+import PostForm from "./PostForm";
+import { useToggle } from "../hooks";
+
 
 const Posts = () => {
+    const { isToggled, toggle } = useToggle(false);
+    const { user } = useContext(AuthContext)
     const [posts, setPosts] = useState([])
 
 
@@ -36,14 +43,27 @@ const Posts = () => {
     }
     const renderPost = () => {
         return posts.map(po => {
-            return <PostCard key={po.id} {...po} />
+            return (<div className='postpage'>
+                <PostCard key={po.id} {...po} />
+            </div>
+            )
         })
     }
 
+
+
+
+
     return (
         <div>
-            <h2>Posts</h2>
-            {renderPost()}
+            <div>
+                <h2>Posts</h2>
+            </div>
+
+
+            <div className="pagecontainer">
+                {renderPost()}
+            </div>
         </div>
     )
 

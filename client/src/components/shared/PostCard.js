@@ -27,6 +27,7 @@ const PostCard = ({ title, body, id, user_id }) => {
                     <hr></hr>
                 <CommentForm key={id} id={id} user_id={user_id} newComment={newComment}/>
                 </Card.Text>
+
             </Card.Body>
         </Card>
     )

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import React from "react";
+import PostCard from "../components/shared/PostCard";
 
 const Posts = () => {
     const [posts, setPosts] = useState([])
@@ -13,15 +14,15 @@ const Posts = () => {
     const getPosts = async () => {
         try {
             let res = await axios.get('/api/posts')
-            setPosts(res.data)
+            setPosts(cleanedPost(res.data))
         }
         catch (err) {
             alert('err')
         }
     }
 
-    const cleanedProducts = () => {
-        posts.map((p) => {
+    const cleanedPost = (post) => {
+        let clean = post.map((p) => {
             return {
                 id: p.id,
                 title: p.title,
@@ -29,26 +30,20 @@ const Posts = () => {
                 user_id: p.user_id
             };
         });
+        return clean
+
 
     }
-    console.log(cleanedProducts)
-
-
-    const renderAllPosts = () => {
-        console.log(posts)
-        return posts.map(p => {
-            return (
-                <div>
-                    {JSON.stringify(p)}
-                </div>
-            )
+    const renderPost = () => {
+        return posts.map(po => {
+            return <PostCard key={po.id} {...po} />
         })
     }
 
     return (
         <div>
-            <h2>hello</h2>
-            {renderAllPosts()}
+            <h2>Posts</h2>
+            {renderPost()}
         </div>
     )
 

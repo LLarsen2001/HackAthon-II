@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users#show'
     get '/users/:user_id/posts/:post_id', to: 'posts#show'
     get '/users/:user_id/posts/:post_id/comments', to: 'comments#index'
+    get '/users/:user_id/all_comments', to: 'comments#all_user_comments'
     post '/users/:user_id', to: 'posts#create'
     post '/users/:user_id/posts/:post_id/comments', to: 'comments#create'
     delete '/users/:id/posts/:id', to: 'posts#destroy'

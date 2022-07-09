@@ -1,50 +1,79 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
 
-const Navbar = () => {
+import { AuthContext } from "../../providers/AuthProvider";
+import Navbar from "react-bootstrap/Navbar"
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
+import { LinkContainer } from 'react-router-bootstrap'
+
+const MyLink = ({ url, children }) => {
+    return (
+        <>
+            <LinkContainer to={url}>
+                <Nav.Link > {children}</Nav.Link>
+            </LinkContainer>
+        </>
+    )
+};
+
+
+const BuildingNavbar = () => {
     const { user, logout } = useContext(AuthContext);
     const renderNavItems = () => {
         if (user) {
             return (
                 <>
-                    <Link to="/account">
-                        <li>Account</li>
-                    </Link>
-                    <Link to="/posts">
-                        <li>Posts</li>
-                    </Link>
-                    <li onClick={logout}>Logout</li>
+
+                    <MyLink url='/posts' >Posts</MyLink>
+
+
+
+
+
+
+
+                    <Nav.Link as={"li"} onClick={logout}>Logout</Nav.Link>
+
                 </>
+
+
             );
         } else {
             return (
                 <>
-                    <Link to="/login">
-                        <li>Login</li>
-                    </Link>
-                    <Link to="/signup">
-                        <li>Sign up</li>
-                    </Link>
+
+
+
+
+
+
+                    <MyLink url="/signup">Sign Up</MyLink>
+
+
+
+
+
                 </>
             );
         }
     };
     return (
+
         <>
-            <nav>
-                <ul>
-                    <Link to="/">
-                        <li>Home</li>
-                    </Link>
-                    <Link to="/hooks">
-                        <li>Hooks</li>
-                    </Link>
-                    {renderNavItems()}
-                </ul>
-            </nav>
+            <Navbar bg="primary" variant="dark">
+                <Container>
+                    <LinkContainer to="/">
+                        <Navbar.Brand href="/home">Twitter</Navbar.Brand>
+                    </LinkContainer>
+                    <Nav className="me-auto">
+                        <MyLink url="/login">Login</MyLink>
+
+                        {renderNavItems()}
+                    </Nav>
+                </Container>
+            </Navbar>
+
         </>
     );
 };
-
-export default Navbar;
+export default BuildingNavbar;

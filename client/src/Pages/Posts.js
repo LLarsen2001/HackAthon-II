@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react"
 import React from "react";
-import PostCard from "../components/shared/PostCard";
+
 import { AuthContext } from "../providers/AuthProvider";
 import Button from 'react-bootstrap/Button'
-import PostForm from "./PostForm";
+
 import { useToggle } from "../hooks";
+import PostCard from "../components/shared/PostCard";
 
 
 const Posts = () => {
@@ -56,10 +57,7 @@ const Posts = () => {
 
     return (
         <div>
-            <div>
-                <h2>Posts</h2>
-            </div>
-
+            <h2>Posts</h2>
 
             <div className="pagecontainer">
                 {renderPost()}

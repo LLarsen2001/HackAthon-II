@@ -17,6 +17,7 @@ const PostForm = (props) => {
 
     return (
         <div>
+
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Post title</Form.Label>

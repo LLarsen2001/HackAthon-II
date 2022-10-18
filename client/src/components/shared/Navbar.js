@@ -33,6 +33,7 @@ const BuildingNavbar = () => {
         } else {
             return (
                 <>
+                    <MyLink url="/login">Login</MyLink>
                     <MyLink url="/signup">Sign Up</MyLink>
                 </>
             );
@@ -47,8 +48,6 @@ const BuildingNavbar = () => {
                         <Navbar.Brand href="/home">Twitter</Navbar.Brand>
                     </LinkContainer>
                     <Nav className="me-auto">
-                        <MyLink url="/login">Login</MyLink>
-
                         {renderNavItems()}
                     </Nav>
                 </Container>
